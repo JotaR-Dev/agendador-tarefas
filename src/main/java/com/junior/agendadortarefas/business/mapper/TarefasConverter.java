@@ -3,11 +3,15 @@ package com.junior.agendadortarefas.business.mapper;
 import com.junior.agendadortarefas.business.dto.TarefasDTO;
 import com.junior.agendadortarefas.infrastructure.entity.TarefasEntity;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 
 import java.util.List;
 
 @Mapper(componentModel = "spring")
 public interface TarefasConverter {
+    @Mapping(source = "id", target = "id")
+    @Mapping(source = "dataEvento", target = "dataEvento")
+    @Mapping(source = "dataCriacao", target = "dataCriacao")
 
     TarefasEntity paraTarefasEntity (TarefasDTO dto);
 
@@ -15,6 +19,6 @@ public interface TarefasConverter {
 
     List<TarefasEntity> paraListaTarefasEntity(List<TarefasDTO> dtos);
 
-    List<TarefasDTO> paraTarefasDTO(List<TarefasEntity> entities);
+    List<TarefasDTO> paraListaTarefasDTO(List<TarefasEntity> entities);
 
 }
